@@ -55,12 +55,14 @@ $(window).load(function(){
 /* END ------------------------------------------------------- */
 
 
+// Calculate the target date and time for 3 PM IST on September 21, 2023
+var targetDate = new Date("2023-09-21T15:00:00Z");
+
 $('#countdown').countdown({
-	date: "Sept 21 2023",
+	date: targetDate,
 	render: function(data) {
 	  var el = $(this.el);
 	  el.empty()
-	    //.append("<div>" + this.leadingZeros(data.years, 4) + "<span>years</span></div>")
 	    .append("<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div>")
 	    .append("<div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div>")
 	    .append("<div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div>")
