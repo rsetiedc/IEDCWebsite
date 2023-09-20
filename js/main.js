@@ -54,9 +54,8 @@ $(window).load(function(){
 });
 /* END ------------------------------------------------------- */
 
-
 // Calculate the target date and time for 3 PM IST on September 21, 2023
-var targetDate = new Date("2023-09-21T15:00:00Z");
+var targetDate = new Date("2023-09-21T15:00:00+05:30"); // UTC time with offset for IST
 
 $('#countdown').countdown({
 	date: targetDate,
