@@ -1,2 +1,2 @@
-# IEDCWebsite
-RSET IEDC Website
+# IEDCwebsite
+IEDC Website
