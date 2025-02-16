@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack'Sus: Coming Soon</title>
+    <style>
+        body {
+            background-color: #000000;
+            opacity: 1;
+            background-image:  linear-gradient(#290042 1.3px, transparent 1.3px), linear-gradient(to right, #290042 1.3px, #000000 1.3px);
+            background-size: 26px 26px;
+            color: #e0e0e0;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        @keyframes blinkCursor {
+            50% {
+            border-right-color: transparent;
+            }
+        }
+
+        @keyframes typeAndDelete {
+        0%,
+        10% {
+            width: 0;
+        }
+        45%{
+
+        }
+        55% {
+            width: 15em;
+        } 
+        90%,
+        100% {
+            width: 15em;
+        }
+        }
+        .Hacksus-title {
+            width:auto;
+            color: #fff;
+            text-shadow: 0 0 10px #9c27b0;
+            font-size: 3.5em;
+            margin-top: 0.7em;
+            margin-bottom: 2em;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.1em solid rgb(124, 0, 128); /* Cursor */
+            animation:
+                typeAndDelete 10s steps(11),
+                blinkCursor 0.5s step-end infinite alternate;
+        }
+
+        .counter-box{
+            background-color: #9c27b0;
+            border-radius: 10px;
+            margin: 0.3em 10%;
+        }
+
+        #countdown {
+            font-size: 2em;
+            margin: 0.5em;
+            color: #fff;
+            text-shadow: 0 0 5px #9c27b0;
+        }
+
+        .glass-card{
+            display: flex;
+            flex-direction: column;
+
+            background: rgba( 179, 94, 234, 0.1 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 2.5px );
+            -webkit-backdrop-filter: blur( 2.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.5em;
+            text-align: center;
+            max-width: 600px;
+            color: #fff;
+            text-shadow: 0 0 5px #9c27b0;
+        }
+
+        #registration {
+            margin-top: 30px;
+        }
+
+        #registration a {
+            color: #fff;
+            text-shadow: 0  5px #9c27b0;
+        }
+
+        @media (max-width: 768px) {
+            .Hacksus-title {
+                font-size: 1.7em;
+            }
+
+            #countdown {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="Hacksus-title">HACK'SUS is  Coming Soon . . .</h1>
+
+    <div class="glass-card">
+        <div class="counter-box">
+            <div id="countdown">
+        </div></div>
+        <p>Get ready for Hack'Sus, the ultimate hackathon experience! <strong>Registrations are coming soon</strong>. Stay tuned for updates.</p>
+        <div id="registration">
+            <p>Reach us for any queries <a href="mailto:rsetiedc@rajagiritech.edu.in">rsetiedc@rajagiritech.edu.in</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Mar 14, 2025 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Hackathon is here!";
+            }
+        }, 1000);
+    </script>
+    
+</body>
+</html>
