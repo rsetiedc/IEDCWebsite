@@ -14,14 +14,8 @@
     bottom: 30px;
     z-index: 99;
 }
-.team-item .img-fluid {
-    width: 100%;           /* Fill the container's width */
-    height: 360px;         /* Fixed height for uniformity */
-    object-fit: cover;     /* Crop and center the image */
-    border-radius: 12px;   /* Slightly rounded corners */
-    display: block;
-    margin: 0 auto;
-}
+
+
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -270,8 +264,8 @@
 
 /*** Team ***/
 .team-header {
-    padding-top: 20rem;
-    padding-bottom: 8rem;
+    padding-top: 16rem;
+    padding-bottom: 6rem;
     background: linear-gradient(rgba(0, 29, 35, .6), rgba(0, 29, 35, .6)), url(../img/team-header.jpg) center center no-repeat;
     background-size: cover;
 }
@@ -528,7 +522,3 @@
     cursor: pointer;
 
   }
-
-.object-top {
-    object-position: top;
-}
