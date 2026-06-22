@@ -1,0 +1,65 @@
+.gallerybox{
+    grid-area: c;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 20px;
+    grid-auto-flow: dense;
+    overflow: auto;
+    padding-right: 20px;  /*fix box-shadow on right side cutting off*/
+  }
+  /*scrollbar stuff*/
+  .gallerybox {
+      -ms-overflow-style: none;  
+      overflow: -moz-scrollbars-none; 
+  }
+  .gallerybox::-webkit-scrollbar { 
+      display: none;  
+  }
+  .gallerybox>div{
+    z-index: 1;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px rgba(0,0,0,.2), 
+                5px 5px 25px rgba(0,0,0,.1);
+    transition: all .3s ease-in-out;
+  }
+  .gallerybox div img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    transition: all .6s ease-in-out;
+  }
+
+  /*make bIG*/
+  .gallerybox>div:hover, .gallerybox>div:hover img{
+    transform: scale(1.05);
+  }
+
+  .card{
+    padding: 0 !important;
+    width: 100%;
+    height: 50%;
+    bottom: -50%;
+    padding: 1em !important;
+    box-sizing: border-box;
+    background: rgba(255,255,255,.5);
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  /*   transform: rotate(-90deg) translateX(-100%); */
+  /*   transform-origin: 0% 0%; */
+  }
+  .vertical{
+    grid-row: span 2;
+  }
+  .horizontal{
+    grid-column: span 2;
+  }
+  .big{
+    grid-row: span 2;
+    grid-column: span 2;
+  }
