@@ -553,3 +553,352 @@
 .team-item:hover img {
     top: -30px;
 }
+
+
+/*** Registration Form Modal ***/
+#registrationFormModal .modal-dialog {
+    max-width: 600px;
+}
+
+#registrationFormModal .modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+#registrationFormModal .modal-header {
+    background: linear-gradient(135deg, #FF6F0F 0%, #FF9A44 50%, #FFB347 100%);
+    border-bottom: none;
+    padding: 28px 32px 24px;
+    position: relative;
+}
+
+#registrationFormModal .modal-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+}
+
+#registrationFormModal .modal-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+#registrationFormModal .modal-header .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    z-index: 2;
+}
+
+#registrationFormModal .modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+#registrationFormModal .reg-event-name {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    margin-top: 4px;
+    font-weight: 400;
+}
+
+#registrationFormModal .modal-body {
+    padding: 24px 32px 32px;
+    background: #fff;
+}
+
+/* Form Group Styling */
+.reg-form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.reg-form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+}
+
+.reg-form-group label .required-star {
+    color: #FF6F0F;
+    margin-left: 2px;
+}
+
+.reg-form-group input[type="text"],
+.reg-form-group input[type="email"],
+.reg-form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #333;
+    background: #fafafa;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.reg-form-group input[type="text"]:focus,
+.reg-form-group input[type="email"]:focus,
+.reg-form-group select:focus {
+    border-color: #FF6F0F;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 111, 15, 0.1);
+}
+
+.reg-form-group input[type="text"]::placeholder,
+.reg-form-group input[type="email"]::placeholder {
+    color: #aaa;
+}
+
+.reg-form-group input.is-invalid,
+.reg-form-group select.is-invalid {
+    border-color: #dc3545;
+    background: #fff5f5;
+}
+
+.reg-form-group .invalid-feedback {
+    display: none;
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+.reg-form-group input.is-invalid ~ .invalid-feedback,
+.reg-form-group select.is-invalid ~ .invalid-feedback,
+.reg-form-group .is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Checkbox Group Styling */
+.reg-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reg-checkbox-item {
+    position: relative;
+}
+
+.reg-checkbox-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.reg-checkbox-item label {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    border: 2px solid #e8e8e8;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #555;
+    background: #fafafa;
+    transition: all 0.3s ease;
+    margin-bottom: 0;
+}
+
+.reg-checkbox-item input[type="checkbox"]:checked + label {
+    border-color: #FF6F0F;
+    background: linear-gradient(135deg, #FFF0E6, #FFF5ED);
+    color: #FF6F0F;
+    box-shadow: 0 2px 8px rgba(255, 111, 15, 0.15);
+}
+
+.reg-checkbox-item label:hover {
+    border-color: #ffb980;
+    background: #fff5ed;
+}
+
+/* Select Dropdown */
+.reg-form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+/* Acknowledgment Checkbox */
+.reg-acknowledge-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(135deg, #FFF8F2, #FFF0E6);
+    border-radius: 12px;
+    border: 1px solid #FFE0C2;
+}
+
+.reg-acknowledge-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    accent-color: #FF6F0F;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.reg-acknowledge-group label {
+    font-size: 0.875rem;
+    color: #555;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Submit Button */
+.reg-submit-btn {
+    width: 100%;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #FF6F0F 0%, #FF9A44 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.02em;
+    margin-top: 8px;
+}
+
+.reg-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 111, 15, 0.35);
+}
+
+.reg-submit-btn:active {
+    transform: translateY(0);
+}
+
+.reg-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.reg-submit-btn .spinner-border {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-width: 2px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Success State */
+.reg-success-state {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    animation: regFadeIn 0.5s ease;
+}
+
+.reg-success-state .success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF6F0F, #FFB347);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    animation: regBounceIn 0.6s ease;
+}
+
+.reg-success-state .success-icon i {
+    font-size: 36px;
+    color: #fff;
+}
+
+.reg-success-state h4 {
+    color: #1a1a2e;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.reg-success-state p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+.reg-success-state .btn-close-success {
+    padding: 10px 32px;
+    background: linear-gradient(135deg, #FF6F0F, #FF9A44);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reg-success-state .btn-close-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 111, 15, 0.3);
+}
+
+/* Error State */
+.reg-error-msg {
+    display: none;
+    padding: 12px 16px;
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    color: #dc3545;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes regFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes regBounceIn {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    #registrationFormModal .modal-body {
+        padding: 20px 20px 28px;
+    }
+    #registrationFormModal .modal-header {
+        padding: 20px 20px 18px;
+    }
+    .reg-checkbox-group {
+        gap: 8px;
+    }
+    .reg-checkbox-item label {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}
