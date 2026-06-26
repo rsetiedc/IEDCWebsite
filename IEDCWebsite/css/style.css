@@ -902,3 +902,28 @@
         font-size: 0.8rem;
     }
 }
+
+/* Custom Event Tabs styling */
+#eventsTab {
+    border: none;
+}
+#eventsTab .nav-link {
+    color: #1a1a2e;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    background-color: #f8f9fa;
+    padding: 10px 24px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+#eventsTab .nav-link.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 111, 15, 0.2);
+}
+#eventsTab .nav-link:hover:not(.active) {
+    border-color: var(--primary);
+    color: var(--primary);
+}

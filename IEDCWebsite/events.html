@@ -122,6 +122,30 @@
                     <h1 class="display-6">OUR EVENTS</h1>
                 </div>
             </div>
+            <!-- Event Tabs & Content (Hidden by default, shown by JS when sheet loads successfully) -->
+            <div id="events-dynamic-tabs" class="d-none">
+                <ul class="nav nav-pills justify-content-center mb-5 wow fadeInUp" id="eventsTab" role="tablist" data-wow-delay="0.1s">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active px-4 py-2" id="open-events-tab" data-bs-toggle="pill" data-bs-target="#open-events-pane" type="button" role="tab" aria-controls="open-events-pane" aria-selected="true">Open Events</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link px-4 py-2" id="closed-events-tab" data-bs-toggle="pill" data-bs-target="#closed-events-pane" type="button" role="tab" aria-controls="closed-events-pane" aria-selected="false">Closed Events</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="eventsTabContent">
+                    <div class="tab-pane fade show active" id="open-events-pane" role="tabpanel" aria-labelledby="open-events-tab" tabindex="0">
+                        <div class="row g-4 justify-content-center" id="open-events-container">
+                            <!-- Open events dynamically loaded here -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="closed-events-pane" role="tabpanel" aria-labelledby="closed-events-tab" tabindex="0">
+                        <div class="row g-4 justify-content-center" id="closed-events-container">
+                            <!-- Closed events dynamically loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row g-4 justify-content-center" id="events-container">
 
                 <!-- Event 1: SIH Internal Selection -->

@@ -224,23 +224,39 @@
     // ── DOM rendering ───────────────────────────────────────────────────
 
     function renderEvents(events) {
-        var $cards  = $('#events-container');
+        var $openContainer = $('#open-events-container');
+        var $closedContainer = $('#closed-events-container');
+        var $dynamicTabs = $('#events-dynamic-tabs');
+        var $fallbackCards = $('#events-container');
         var $modals = $('#modals-container');
-        if (!$cards.length || !$modals.length) return;
+        if (!$openContainer.length || !$closedContainer.length || !$modals.length) return;
 
-        var cardsHtml  = '';
+        var openCardsHtml  = '';
+        var closedCardsHtml = '';
         var modalsHtml = '';
+
+        var openCount = 0;
+        var closedCount = 0;
 
         $.each(events, function (index, ev) {
             var dateStr   = formatEventDate(ev.Start_Date, ev.End_Date);
             var imgPath   = getEventImage(ev.Cover_Image);
-            var delay     = ((index % 3) * 0.2 + 0.1).toFixed(1) + 's';
+            var statusLower = ev.Status.toLowerCase();
+            var isOpen    = (statusLower === 'upcoming' || statusLower === 'active');
+            
+            var cardIndex = isOpen ? openCount : closedCount;
+            var delay     = ((cardIndex % 3) * 0.2 + 0.1).toFixed(1) + 's';
             var modalId   = 'sheetModal_' + esc(ev.Event_ID);
-            var isActive  = (ev.Status.toLowerCase() === 'upcoming' || ev.Status.toLowerCase() === 'active');
-            var btnLabel  = isActive ? 'Register Now' : 'Read More';
+            var btnLabel  = isOpen ? 'Register Now' : 'Read More';
+
+            if (isOpen) {
+                openCount++;
+            } else {
+                closedCount++;
+            }
 
             // ──── Card ────
-            cardsHtml +=
+            var cardHtml =
                 '<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="' + delay + '">' +
                   '<div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100 shadow-sm">' +
                     '<div class="p-4 pt-3 flex-grow-1">' +
@@ -272,6 +288,12 @@
                   '</div>' +
                 '</div>';
 
+            if (isOpen) {
+                openCardsHtml += cardHtml;
+            } else {
+                closedCardsHtml += cardHtml;
+            }
+
             // ──── Modal ────
             var modalBody =
                 '<div class="row">' +
@@ -279,16 +301,16 @@
                     '<img class="img-fluid rounded mb-3 mb-md-0" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '">' +
                   '</div>' +
                   '<div class="col-md-6">' +
-
+ 
                     // Badges
                     '<div class="mb-3">' +
                       '<span class="badge bg-secondary text-primary rounded-pill px-3 py-1 fw-bold">' + esc(ev.Event_Type) + '</span>' +
                       (ev.Category ? ' <span class="badge bg-primary text-white rounded-pill px-3 py-1 fw-bold ms-1">' + esc(ev.Category) + '</span>' : '') +
                     '</div>' +
-
+ 
                     // Description
                     '<p class="mb-4">' + esc(ev.Detailed_Description || ev.Short_Description) + '</p>' +
-
+ 
                     // Event Details box
                     '<div class="bg-light p-3 rounded mb-3">' +
                       '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-info-circle text-primary me-2"></i>Event Details</h6>' +
@@ -324,10 +346,10 @@
             }
 
             // CTA button — link directly to Google Form URL
-            if (isActive && ev.Reg_Form) {
+            if (isOpen && ev.Reg_Form) {
                 modalBody += '<a href="' + esc(ev.Reg_Form) + '" target="_blank" class="btn btn-primary w-100 mt-2 reg-now-btn">' +
                              '<i class="fa fa-edit me-2"></i>Register Now</a>';
-            } else if (isActive) {
+            } else if (isOpen) {
                 modalBody += '<button class="btn btn-secondary w-100 mt-2" disabled>Registration Link Unavailable</button>';
             } else {
                 modalBody += '<button class="btn btn-secondary w-100 mt-2" disabled>Registration Closed</button>';
@@ -351,9 +373,22 @@
                 '</div>';
         });
 
+        // Set empty states if needed
+        if (openCount === 0) {
+            openCardsHtml = '<div class="col-12 text-center py-5"><h5 class="text-muted">No open events at the moment. Stay tuned!</h5></div>';
+        }
+        if (closedCount === 0) {
+            closedCardsHtml = '<div class="col-12 text-center py-5"><h5 class="text-muted">No past events to display.</h5></div>';
+        }
+
         // Replace the containers
-        $cards.html(cardsHtml);
+        $openContainer.html(openCardsHtml);
+        $closedContainer.html(closedCardsHtml);
         $modals.html(modalsHtml);
+
+        // Hide fallback static cards and show dynamic tabbed container
+        $fallbackCards.addClass('d-none');
+        $dynamicTabs.removeClass('d-none');
 
         // Re-init WOW.js so the freshly injected cards still animate
         if (typeof WOW !== 'undefined') {
