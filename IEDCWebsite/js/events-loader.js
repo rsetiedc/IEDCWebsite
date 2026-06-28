@@ -90,7 +90,6 @@
 
         if (isUrl) {
             var urlStr = str;
-            // Prepend https:// if it starts with www. or doesn't have a protocol
             if (!/^https?:\/\//i.test(urlStr)) {
                 urlStr = 'https://' + urlStr;
             }
@@ -106,6 +105,10 @@
                 return 'https://lh3.googleusercontent.com/d/' + driveIdMatch[1];
             }
 
+            // Convert Dropbox URLs to direct image URLs
+            if (urlStr.indexOf('dropbox.com') !== -1) {
+                return urlStr.replace(/\?dl=\d/i, '').replace(/&dl=\d/i, '') + (urlStr.indexOf('?') !== -1 ? '&raw=1' : '?raw=1');
+            }
             // Convert Kommodo.ai URLs to direct image URLs using createdAt date
             var kommodoMatch = urlStr.match(/https?:\/\/(?:www\.)?kommodo\.ai\/i\/([a-zA-Z0-9_-]+)/i);
             if (kommodoMatch && kommodoMatch[1]) {
@@ -146,6 +149,83 @@
         // Assume the value is a filename living in img/
         return 'img/' + str.split('/').pop();
     }
+
+    /** Generate list of candidate URLs for Kommodo images based on event start date and current date. */
+    function getEventImageFallbacks(imgVal, ev) {
+        var str = String(imgVal || '').trim();
+        var kommodoMatch = str.match(/https?:\/\/(?:www\.)?kommodo\.ai\/i\/([a-zA-Z0-9_-]+)/i);
+        if (!kommodoMatch || !kommodoMatch[1]) {
+            return [];
+        }
+        var kommodoId = kommodoMatch[1];
+
+        // Gather base dates to generate fallbacks from:
+        // 1. Created_At (if exists)
+        // 2. Start_Date of the event (if exists)
+        // 3. Current system date (today)
+        var baseDates = [];
+
+        if (ev.Created_At) {
+            var d1 = new Date(ev.Created_At);
+            if (!isNaN(d1.getTime())) baseDates.push(d1);
+        }
+        if (ev.Start_Date) {
+            var d2 = parseGVizDate(ev.Start_Date);
+            if (d2 && !isNaN(d2.getTime())) baseDates.push(d2);
+        }
+        var d3 = new Date();
+        baseDates.push(d3);
+
+        var uniqueDateStrings = [];
+        var seenDates = {};
+
+        // Generate dates for each base date and up to 14 days before it to cover different upload timings
+        $.each(baseDates, function(idx, baseDate) {
+            for (var offset = 0; offset <= 14; offset++) {
+                var d = new Date(baseDate.getTime());
+                d.setDate(d.getDate() - offset);
+
+                var yyyy = d.getFullYear();
+                var mm = String(d.getMonth() + 1).padStart(2, '0');
+                var dd = String(d.getDate()).padStart(2, '0');
+                var dateStr = yyyy + mm + '/' + dd;
+
+                if (!seenDates[dateStr]) {
+                    seenDates[dateStr] = true;
+                    uniqueDateStrings.push(dateStr);
+                }
+            }
+        });
+
+        var fallbacks = [];
+        $.each(uniqueDateStrings, function(idx, dateStr) {
+            var url = 'https://plain-apac-prod-public.komododecks.com/' + dateStr + '/' + kommodoId + '/image.jpg';
+            fallbacks.push(url);
+        });
+
+        return fallbacks;
+    }
+
+    // Global onerror handler for Kommodo image loading
+    window.handleKommodoError = function (img) {
+        var fallbacksStr = img.getAttribute('data-fallbacks');
+        if (fallbacksStr) {
+            try {
+                var fallbacks = JSON.parse(fallbacksStr);
+                if (Array.isArray(fallbacks) && fallbacks.length > 0) {
+                    var nextUrl = fallbacks.shift();
+                    img.setAttribute('data-fallbacks', JSON.stringify(fallbacks));
+                    img.src = nextUrl;
+                    return;
+                }
+            } catch (e) {
+                console.error('[events-loader] Error handling image fallback:', e);
+            }
+        }
+        // Final fallback
+        img.src = 'img/upcoming1.jpeg';
+        img.onerror = null;
+    };
 
     // ── Helper to safely escape HTML to prevent XSS ─────────────────────
     function esc(str) {
@@ -290,6 +370,9 @@
                 closedCount++;
             }
 
+            var fallbacks = getEventImageFallbacks(ev.Cover_Image, ev);
+            var fallbacksAttr = fallbacks.length > 0 ? ' data-fallbacks="' + esc(JSON.stringify(fallbacks)) + '" onerror="window.handleKommodoError && window.handleKommodoError(this)"' : '';
+
             // ──── Card ────
             var cardHtml =
                 '<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="' + delay + '">' +
@@ -310,7 +393,7 @@
                 '</div>' +
                 '</div>' +
                 '<div class="position-relative mt-auto">' +
-                '<img class="img-fluid w-100" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '" style="height:220px;object-fit:cover;">' +
+                '<img class="img-fluid w-100" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '" style="height:220px;object-fit:cover;"' + fallbacksAttr + '>' +
                 '<div class="causes-overlay">' +
                 '<a class="btn btn-outline-primary" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#' + modalId + '">' +
                 btnLabel +
@@ -333,7 +416,7 @@
             var modalBody =
                 '<div class="row">' +
                 '<div class="col-md-6">' +
-                '<img class="img-fluid rounded mb-3 mb-md-0" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '">' +
+                '<img class="img-fluid rounded mb-3 mb-md-0" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '"' + fallbacksAttr + '>' +
                 '</div>' +
                 '<div class="col-md-6">' +
 
