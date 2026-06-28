@@ -68,27 +68,62 @@
     // ── Image resolver ──────────────────────────────────────────────────
 
     /** Map the Cover_Image keyword from the sheet to a local asset or convert URL. */
-    function getEventImage(imgVal) {
-        if (!imgVal) return 'img/upcoming1.jpeg';
+    function getEventImage(imgVal, title, createdAt) {
+        if (title) {
+            var cleanTitle = String(title).trim().replace(/[\u2018\u2019]/g, "'");
+            if (cleanTitle === "0' Points") {
+                return 'img/0_pts.jpeg';
+            }
+        }
+        var str = String(imgVal || '').trim();
+        if (str === '1782635297722-d16fc3fb-a142-4b3a-bb0e-efb5f3424090.jpg') {
+            return 'img/0_pts.jpeg';
+        }
+        if (!str) return 'img/upcoming1.jpeg';
 
-        var str = String(imgVal).trim();
         
-        // Handle full web URLs
-        if (str.indexOf('http://') === 0 || str.indexOf('https://') === 0) {
+        // Handle web URLs and Google Drive links robustly
+        var isUrl = /^(https?:\/\/|www\.)/i.test(str) || 
+                    /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\//.test(str) || 
+                    str.indexOf('drive.google.com') !== -1 || 
+                    str.indexOf('docs.google.com') !== -1;
+
+        if (isUrl) {
+            var urlStr = str;
+            // Prepend https:// if it starts with www. or doesn't have a protocol
+            if (!/^https?:\/\//i.test(urlStr)) {
+                urlStr = 'https://' + urlStr;
+            }
+
             // Convert Google Drive URLs to direct image URLs
-            var driveFileRegex = /https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/;
-            var match = str.match(driveFileRegex);
-            if (match && match[1]) {
-                return 'https://lh3.googleusercontent.com/d/' + match[1];
+            var driveFileMatch = urlStr.match(/\/file\/d\/([a-zA-Z0-9_-]+)/i);
+            if (driveFileMatch && driveFileMatch[1]) {
+                return 'https://lh3.googleusercontent.com/d/' + driveFileMatch[1];
             }
-            var driveIdRegex = /[?&]id=([a-zA-Z0-9_-]+)/;
-            if (str.indexOf('drive.google.com') !== -1) {
-                var matchId = str.match(driveIdRegex);
-                if (matchId && matchId[1]) {
-                    return 'https://lh3.googleusercontent.com/d/' + matchId[1];
+
+            var driveIdMatch = urlStr.match(/[?&]id=([a-zA-Z0-9_-]+)/i);
+            if (driveIdMatch && driveIdMatch[1] && urlStr.indexOf('google.com') !== -1) {
+                return 'https://lh3.googleusercontent.com/d/' + driveIdMatch[1];
+            }
+
+            // Convert Kommodo.ai URLs to direct image URLs using createdAt date
+            var kommodoMatch = urlStr.match(/https?:\/\/(?:www\.)?kommodo\.ai\/i\/([a-zA-Z0-9_-]+)/i);
+            if (kommodoMatch && kommodoMatch[1]) {
+                var kommodoId = kommodoMatch[1];
+                var dateObj = new Date();
+                if (createdAt) {
+                    var parsedDate = new Date(createdAt);
+                    if (!isNaN(parsedDate.getTime())) {
+                        dateObj = parsedDate;
+                    }
                 }
+                var yyyy = dateObj.getFullYear();
+                var mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+                var dd = String(dateObj.getDate()).padStart(2, '0');
+                return 'https://plain-apac-prod-public.komododecks.com/' + yyyy + mm + '/' + dd + '/' + kommodoId + '/image.jpg';
             }
-            return str;
+
+            return urlStr;
         }
 
         var lower = str.toLowerCase();
@@ -240,7 +275,7 @@
 
         $.each(events, function (index, ev) {
             var dateStr   = formatEventDate(ev.Start_Date, ev.End_Date);
-            var imgPath   = getEventImage(ev.Cover_Image);
+            var imgPath   = getEventImage(ev.Cover_Image, ev.Event_Title, ev.Created_At);
             var statusLower = ev.Status.toLowerCase();
             var isOpen    = (statusLower === 'upcoming' || statusLower === 'active');
             

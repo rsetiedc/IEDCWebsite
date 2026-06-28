@@ -70,9 +70,10 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
             <a href="index.html" class="navbar-brand ms-4 ms-lg-0 d-inline-flex align-items-center">
-                <img src="./img/rset_ innovation.png" alt="Logo" style="max-height: 75px; max-width: 240px; object-fit: contain;">
-                <img src="./img/iic_logo.jpg" alt="IIC Logo" class="ms-2 ms-md-3" style="max-height: 65px; width: auto; object-fit: contain; border-radius: 4px;">
-                <img src="./img/rset_jubilee.jpeg" alt="RSET Jubilee Logo" class="ms-2 ms-md-3" style="max-height: 65px; width: auto; object-fit: contain; border-radius: 4px;">
+                <img src="./img/rset_ innovation.png" alt="Logo"
+                    style="max-height: 75px; max-width: 240px; object-fit: contain;">
+                <img src="./img/iic_logo.jpg" alt="IIC Logo" class="ms-2 ms-md-3"
+                    style="max-height: 75px; width: auto; object-fit: contain; border-radius: 4px;">
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">
@@ -126,21 +127,28 @@
             </div>
             <!-- Event Tabs & Content (Hidden by default, shown by JS when sheet loads successfully) -->
             <div id="events-dynamic-tabs" class="d-none">
-                <ul class="nav nav-pills justify-content-center mb-5 wow fadeInUp" id="eventsTab" role="tablist" data-wow-delay="0.1s">
+                <ul class="nav nav-pills justify-content-center mb-5 wow fadeInUp" id="eventsTab" role="tablist"
+                    data-wow-delay="0.1s">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active px-4 py-2" id="open-events-tab" data-bs-toggle="pill" data-bs-target="#open-events-pane" type="button" role="tab" aria-controls="open-events-pane" aria-selected="true">Open Events</button>
+                        <button class="nav-link active px-4 py-2" id="open-events-tab" data-bs-toggle="pill"
+                            data-bs-target="#open-events-pane" type="button" role="tab" aria-controls="open-events-pane"
+                            aria-selected="true">Open Events</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link px-4 py-2" id="closed-events-tab" data-bs-toggle="pill" data-bs-target="#closed-events-pane" type="button" role="tab" aria-controls="closed-events-pane" aria-selected="false">Closed Events</button>
+                        <button class="nav-link px-4 py-2" id="closed-events-tab" data-bs-toggle="pill"
+                            data-bs-target="#closed-events-pane" type="button" role="tab"
+                            aria-controls="closed-events-pane" aria-selected="false">Closed Events</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="eventsTabContent">
-                    <div class="tab-pane fade show active" id="open-events-pane" role="tabpanel" aria-labelledby="open-events-tab" tabindex="0">
+                    <div class="tab-pane fade show active" id="open-events-pane" role="tabpanel"
+                        aria-labelledby="open-events-tab" tabindex="0">
                         <div class="row g-4 justify-content-center" id="open-events-container">
                             <!-- Open events dynamically loaded here -->
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="closed-events-pane" role="tabpanel" aria-labelledby="closed-events-tab" tabindex="0">
+                    <div class="tab-pane fade" id="closed-events-pane" role="tabpanel"
+                        aria-labelledby="closed-events-tab" tabindex="0">
                         <div class="row g-4 justify-content-center" id="closed-events-container">
                             <!-- Closed events dynamically loaded here -->
                         </div>
@@ -527,384 +535,404 @@
 
     <!-- Event Modals -->
     <div id="modals-container">
-    <!-- Modal 1 -->
-    <div class="modal fade" id="eventModal1" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel1"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel1">SIH Internal Selection</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/upcoming1.jpeg"
-                                alt="SIH Internal Selection">
-                        </div>
-                        <div class="col-md-6">
-                            <p>🚀 Join the Smart India Hackathon Internal Selection - Ideathon! 🚀<br><br>
-                                Calling all innovators and problem-solvers! It's time to shine and represent our college
-                                at the Smart India Hackathon (SIH) conducted by the Government of India.<br><br>
-                                👥 <strong>Participation Guidelines:</strong><br>
-                                - The team must consist of exactly 6 members.<br>
-                                - Team must include at least one female member.<br><br>
-                                🧩 <strong>Themes:</strong><br>
-                                Choose a theme that sparks your passion and creativity from the link below:<br>
-                                <a href="https://www.sih.gov.in/SIH2023Themes"
-                                    target="_blank">https://www.sih.gov.in/SIH2023Themes</a><br><br>
-                                📅 <strong>Date:</strong> 23rd September, 2026<br>
-                                🕒 <strong>Time:</strong> 9:00 AM - 1:30 PM<br>
-                                📍 <strong>Venue:</strong> Gallery Hall<br>
-                            </p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=SIH%20Internal%20Selection%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 1 -->
+        <div class="modal fade" id="eventModal1" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel1">SIH Internal Selection</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/upcoming1.jpeg"
+                                    alt="SIH Internal Selection">
+                            </div>
+                            <div class="col-md-6">
+                                <p>🚀 Join the Smart India Hackathon Internal Selection - Ideathon! 🚀<br><br>
+                                    Calling all innovators and problem-solvers! It's time to shine and represent our
+                                    college
+                                    at the Smart India Hackathon (SIH) conducted by the Government of India.<br><br>
+                                    👥 <strong>Participation Guidelines:</strong><br>
+                                    - The team must consist of exactly 6 members.<br>
+                                    - Team must include at least one female member.<br><br>
+                                    🧩 <strong>Themes:</strong><br>
+                                    Choose a theme that sparks your passion and creativity from the link below:<br>
+                                    <a href="https://www.sih.gov.in/SIH2023Themes"
+                                        target="_blank">https://www.sih.gov.in/SIH2023Themes</a><br><br>
+                                    📅 <strong>Date:</strong> 23rd September, 2026<br>
+                                    🕒 <strong>Time:</strong> 9:00 AM - 1:30 PM<br>
+                                    📍 <strong>Venue:</strong> Gallery Hall<br>
+                                </p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=SIH%20Internal%20Selection%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 2 -->
-    <div class="modal fade" id="eventModal2" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel2"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel2">Startup BootCamp 1.0</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery1.jpg"
-                                alt="Startup BootCamp 1.0">
-                        </div>
-                        <div class="col-md-6">
-                            <p>🔥 Ignite your entrepreneurial journey with Startup BootCamp 1.0! 🔥<br><br>
-                                Whether you have a fully formed business idea or are just curious about how startups
-                                work, this bootcamp is for you. Learn the foundations of starting a company from
-                                scratch.<br><br>
-                                📝 <strong>What we will cover:</strong><br>
-                                - Ideation and Brainstorming Techniques.<br>
-                                - Building a Business Model Canvas (BMC).<br>
-                                - Customer Discovery and Market Research.<br>
-                                - Perfecting your Pitch Deck.<br><br>
-                                Mentorship will be provided by successful startup founders and industry
-                                veterans.<br><br>
-                                📅 <strong>Date:</strong> 12th - 14th October, 2026<br>
-                                🕒 <strong>Time:</strong> 9:30 AM - 4:00 PM daily<br>
-                                📍 <strong>Venue:</strong> Decennial Hall<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=Startup%20BootCamp%201.0%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 2 -->
+        <div class="modal fade" id="eventModal2" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel2"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel2">Startup BootCamp 1.0</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery1.jpg"
+                                    alt="Startup BootCamp 1.0">
+                            </div>
+                            <div class="col-md-6">
+                                <p>🔥 Ignite your entrepreneurial journey with Startup BootCamp 1.0! 🔥<br><br>
+                                    Whether you have a fully formed business idea or are just curious about how startups
+                                    work, this bootcamp is for you. Learn the foundations of starting a company from
+                                    scratch.<br><br>
+                                    📝 <strong>What we will cover:</strong><br>
+                                    - Ideation and Brainstorming Techniques.<br>
+                                    - Building a Business Model Canvas (BMC).<br>
+                                    - Customer Discovery and Market Research.<br>
+                                    - Perfecting your Pitch Deck.<br><br>
+                                    Mentorship will be provided by successful startup founders and industry
+                                    veterans.<br><br>
+                                    📅 <strong>Date:</strong> 12th - 14th October, 2026<br>
+                                    🕒 <strong>Time:</strong> 9:30 AM - 4:00 PM daily<br>
+                                    📍 <strong>Venue:</strong> Decennial Hall<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=Startup%20BootCamp%201.0%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 3 -->
-    <div class="modal fade" id="eventModal3" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel3"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel3">IPR & Patent Filing</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery2.jpg"
-                                alt="IPR & Patent Filing">
-                        </div>
-                        <div class="col-md-6">
-                            <p>💡 Protect your innovations! Learn the essentials of Intellectual Property Rights (IPR).
-                                💡<br><br>
-                                In today's innovation-driven economy, understanding IPR is crucial for engineers and
-                                developers. This seminar will guide you on how to turn your project work into
-                                intellectual property assets.<br><br>
-                                🔍 <strong>Key Takeaways:</strong><br>
-                                - Difference between Patents, Trademarks, and Copyrights.<br>
-                                - How to conduct a prior art search.<br>
-                                - The patent application drafting and filing process in India.<br>
-                                - Support and funding available for patent filing via Kerala Startup Mission
-                                (KSUM).<br><br>
-                                📅 <strong>Date:</strong> 5th November, 2026<br>
-                                🕒 <strong>Time:</strong> 1:30 PM - 4:00 PM<br>
-                                📍 <strong>Venue:</strong> Seminar Hall<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=IPR%20%26%20Patent%20Filing%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 3 -->
+        <div class="modal fade" id="eventModal3" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel3"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel3">IPR & Patent Filing</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery2.jpg"
+                                    alt="IPR & Patent Filing">
+                            </div>
+                            <div class="col-md-6">
+                                <p>💡 Protect your innovations! Learn the essentials of Intellectual Property Rights
+                                    (IPR).
+                                    💡<br><br>
+                                    In today's innovation-driven economy, understanding IPR is crucial for engineers and
+                                    developers. This seminar will guide you on how to turn your project work into
+                                    intellectual property assets.<br><br>
+                                    🔍 <strong>Key Takeaways:</strong><br>
+                                    - Difference between Patents, Trademarks, and Copyrights.<br>
+                                    - How to conduct a prior art search.<br>
+                                    - The patent application drafting and filing process in India.<br>
+                                    - Support and funding available for patent filing via Kerala Startup Mission
+                                    (KSUM).<br><br>
+                                    📅 <strong>Date:</strong> 5th November, 2026<br>
+                                    🕒 <strong>Time:</strong> 1:30 PM - 4:00 PM<br>
+                                    📍 <strong>Venue:</strong> Seminar Hall<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=IPR%20%26%20Patent%20Filing%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 4 -->
-    <div class="modal fade" id="eventModal4" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel4"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel4">HackRSET '26</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery3.jpg" alt="HackRSET '26">
-                        </div>
-                        <div class="col-md-6">
-                            <p>💻 Are you ready to code, build, and conquer? Join HackRSET '26! 💻<br><br>
-                                RSET IEDC's premier 24-hour hackathon returns. Collaborate, innovate, and build a
-                                working software prototype or hardware model to solve challenging problems faced by
-                                modern industries.<br><br>
-                                🏆 <strong>Perks of Participating:</strong><br>
-                                - Cash prizes worth ₹50,000 for top teams.<br>
-                                - Continuous mentoring from tech experts.<br>
-                                - Free meals, snacks, energy drinks, and cool stickers/t-shirts.<br>
-                                - Opportunities to pitch to startup incubators.<br><br>
-                                📅 <strong>Date:</strong> 20th - 21st November, 2026<br>
-                                🕒 <strong>Time:</strong> Starts at 10:00 AM (20th Nov)<br>
-                                📍 <strong>Venue:</strong> PG Lab<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=HackRSET%20%2726%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 4 -->
+        <div class="modal fade" id="eventModal4" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel4"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel4">HackRSET '26</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery3.jpg" alt="HackRSET '26">
+                            </div>
+                            <div class="col-md-6">
+                                <p>💻 Are you ready to code, build, and conquer? Join HackRSET '26! 💻<br><br>
+                                    RSET IEDC's premier 24-hour hackathon returns. Collaborate, innovate, and build a
+                                    working software prototype or hardware model to solve challenging problems faced by
+                                    modern industries.<br><br>
+                                    🏆 <strong>Perks of Participating:</strong><br>
+                                    - Cash prizes worth ₹50,000 for top teams.<br>
+                                    - Continuous mentoring from tech experts.<br>
+                                    - Free meals, snacks, energy drinks, and cool stickers/t-shirts.<br>
+                                    - Opportunities to pitch to startup incubators.<br><br>
+                                    📅 <strong>Date:</strong> 20th - 21st November, 2026<br>
+                                    🕒 <strong>Time:</strong> Starts at 10:00 AM (20th Nov)<br>
+                                    📍 <strong>Venue:</strong> PG Lab<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=HackRSET%20%2726%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 5 -->
-    <div class="modal fade" id="eventModal5" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel5"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel5">Meet the Entrepreneur</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery4.jpg"
-                                alt="Meet the Entrepreneur">
-                        </div>
-                        <div class="col-md-6">
-                            <p>🎙️ Meet the Entrepreneur: Real Stories, Real Insights 🎙️<br><br>
-                                Get inspired by those who walked these campus halls before you and built successful
-                                startups. We are hosting a fireside chat with prominent RSET alumni who have
-                                successfully raised funding and scaled their ventures.<br><br>
-                                💡 <strong>Session Highlights:</strong><br>
-                                - The transition from student to startup founder.<br>
-                                - Funding, building a team, and scaling lessons.<br>
-                                - Q&A session where you can ask your burning questions directly.<br><br>
-                                📅 <strong>Date:</strong> 3rd December, 2026<br>
-                                🕒 <strong>Time:</strong> 2:00 PM - 4:00 PM<br>
-                                📍 <strong>Venue:</strong> Central Library Conference Room<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=Meet%20the%20Entrepreneur%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 5 -->
+        <div class="modal fade" id="eventModal5" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel5"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel5">Meet the Entrepreneur</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery4.jpg"
+                                    alt="Meet the Entrepreneur">
+                            </div>
+                            <div class="col-md-6">
+                                <p>🎙️ Meet the Entrepreneur: Real Stories, Real Insights 🎙️<br><br>
+                                    Get inspired by those who walked these campus halls before you and built successful
+                                    startups. We are hosting a fireside chat with prominent RSET alumni who have
+                                    successfully raised funding and scaled their ventures.<br><br>
+                                    💡 <strong>Session Highlights:</strong><br>
+                                    - The transition from student to startup founder.<br>
+                                    - Funding, building a team, and scaling lessons.<br>
+                                    - Q&A session where you can ask your burning questions directly.<br><br>
+                                    📅 <strong>Date:</strong> 3rd December, 2026<br>
+                                    🕒 <strong>Time:</strong> 2:00 PM - 4:00 PM<br>
+                                    📍 <strong>Venue:</strong> Central Library Conference Room<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=Meet%20the%20Entrepreneur%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 6 -->
-    <div class="modal fade" id="eventModal6" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel6"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel6">Design Thinking Session</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery5.jpg"
-                                alt="Design Thinking Session">
-                        </div>
-                        <div class="col-md-6">
-                            <p>🎨 Learn to design products that users actually love! 🎨<br><br>
-                                Design thinking is a powerful problem-solving methodology used by leading companies like
-                                Apple, Google, and Airbnb. This interactive workshop will teach you how to apply design
-                                thinking to your business ideas.<br><br>
-                                🛠️ <strong>Hands-on Activities:</strong><br>
-                                - Empathizing with users through interviews.<br>
-                                - Creating user personas and empathy maps.<br>
-                                - Defining the core problem statement.<br>
-                                - Building low-fidelity paper and digital prototypes.<br><br>
-                                📅 <strong>Date:</strong> 14th January, 2027<br>
-                                🕒 <strong>Time:</strong> 9:30 AM - 1:00 PM<br>
-                                📍 <strong>Venue:</strong> Innovation Lab<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=Design%20Thinking%20Session%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 6 -->
+        <div class="modal fade" id="eventModal6" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel6"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel6">Design Thinking Session</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/gallery5.jpg"
+                                    alt="Design Thinking Session">
+                            </div>
+                            <div class="col-md-6">
+                                <p>🎨 Learn to design products that users actually love! 🎨<br><br>
+                                    Design thinking is a powerful problem-solving methodology used by leading companies
+                                    like
+                                    Apple, Google, and Airbnb. This interactive workshop will teach you how to apply
+                                    design
+                                    thinking to your business ideas.<br><br>
+                                    🛠️ <strong>Hands-on Activities:</strong><br>
+                                    - Empathizing with users through interviews.<br>
+                                    - Creating user personas and empathy maps.<br>
+                                    - Defining the core problem statement.<br>
+                                    - Building low-fidelity paper and digital prototypes.<br><br>
+                                    📅 <strong>Date:</strong> 14th January, 2027<br>
+                                    🕒 <strong>Time:</strong> 9:30 AM - 1:00 PM<br>
+                                    📍 <strong>Venue:</strong> Innovation Lab<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=Design%20Thinking%20Session%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 7 -->
-    <div class="modal fade" id="eventModal7" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel7"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel7">AI & Emerging Tech</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/s1.png" alt="AI & Emerging Tech">
-                        </div>
-                        <div class="col-md-6">
-                            <p>🤖 Explore the frontier of technology and entrepreneurship! 🤖<br><br>
-                                How can you build a tech startup in the age of Artificial Intelligence? This seminar
-                                will explore how generative AI, machine learning, and emerging tech stacks are reshaping
-                                industries and creating new startup opportunities.<br><br>
-                                📊 <strong>Key Topics:</strong><br>
-                                - Integrating AI/ML API models into your application.<br>
-                                - Real-world case studies of successful AI startups.<br>
-                                - Ethically building AI-first products.<br>
-                                - Identifying market gaps that can be solved with automation.<br><br>
-                                📅 <strong>Date:</strong> 8th February, 2027<br>
-                                🕒 <strong>Time:</strong> 2:00 PM - 4:30 PM<br>
-                                📍 <strong>Venue:</strong> Multimedia Hall<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=AI%20%26%20Emerging%20Tech%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 7 -->
+        <div class="modal fade" id="eventModal7" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel7"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel7">AI & Emerging Tech</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/s1.png" alt="AI & Emerging Tech">
+                            </div>
+                            <div class="col-md-6">
+                                <p>🤖 Explore the frontier of technology and entrepreneurship! 🤖<br><br>
+                                    How can you build a tech startup in the age of Artificial Intelligence? This seminar
+                                    will explore how generative AI, machine learning, and emerging tech stacks are
+                                    reshaping
+                                    industries and creating new startup opportunities.<br><br>
+                                    📊 <strong>Key Topics:</strong><br>
+                                    - Integrating AI/ML API models into your application.<br>
+                                    - Real-world case studies of successful AI startups.<br>
+                                    - Ethically building AI-first products.<br>
+                                    - Identifying market gaps that can be solved with automation.<br><br>
+                                    📅 <strong>Date:</strong> 8th February, 2027<br>
+                                    🕒 <strong>Time:</strong> 2:00 PM - 4:30 PM<br>
+                                    📍 <strong>Venue:</strong> Multimedia Hall<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=AI%20%26%20Emerging%20Tech%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 8 -->
-    <div class="modal fade" id="eventModal8" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel8"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel8">Pitch Perfect</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/s2.jpeg" alt="Pitch Perfect">
-                        </div>
-                        <div class="col-md-6">
-                            <p>📢 Pitch Perfect: Can you sell your dream in 3 minutes? 📢<br><br>
-                                The ultimate elevator pitch competition for student startups at RSET. Present your
-                                business idea, value proposition, and market potential to a panel of angel investors and
-                                venture capitalists.<br><br>
-                                💰 <strong>Prizes & Benefits:</strong><br>
-                                - Seed grants for the top 3 ideas.<br>
-                                - Direct entry into the RSET TBI Incubation program.<br>
-                                - Valuable feedback from actual investors.<br><br>
-                                📅 <strong>Date:</strong> 25th February, 2027<br>
-                                🕒 <strong>Time:</strong> 10:00 AM - 1:00 PM<br>
-                                📍 <strong>Venue:</strong> Gallery Hall<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=Pitch%20Perfect%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 8 -->
+        <div class="modal fade" id="eventModal8" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel8"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel8">Pitch Perfect</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/s2.jpeg" alt="Pitch Perfect">
+                            </div>
+                            <div class="col-md-6">
+                                <p>📢 Pitch Perfect: Can you sell your dream in 3 minutes? 📢<br><br>
+                                    The ultimate elevator pitch competition for student startups at RSET. Present your
+                                    business idea, value proposition, and market potential to a panel of angel investors
+                                    and
+                                    venture capitalists.<br><br>
+                                    💰 <strong>Prizes & Benefits:</strong><br>
+                                    - Seed grants for the top 3 ideas.<br>
+                                    - Direct entry into the RSET TBI Incubation program.<br>
+                                    - Valuable feedback from actual investors.<br><br>
+                                    📅 <strong>Date:</strong> 25th February, 2027<br>
+                                    🕒 <strong>Time:</strong> 10:00 AM - 1:00 PM<br>
+                                    📍 <strong>Venue:</strong> Gallery Hall<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=Pitch%20Perfect%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 9 -->
-    <div class="modal fade" id="eventModal9" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel9"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel9">Securing Grants & Funding</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/s3.jpeg"
-                                alt="Securing Grants & Funding">
-                        </div>
-                        <div class="col-md-6">
-                            <p>🌐 Securing Grants & Startup Funding: A Step-by-Step Guide 🌐<br><br>
-                                Funding is one of the biggest challenges for early-stage startups. Fortunately, there
-                                are multiple grants and support systems specifically designed for student founders in
-                                Kerala.<br><br>
-                                💡 <strong>What will be covered:</strong><br>
-                                - Applying for the KSUM Student Idea Grant (up to ₹2 Lakhs).<br>
-                                - Understanding NIDHI-PRAYAS and central government schemes.<br>
-                                - Writing a winning grant proposal.<br>
-                                - Preparing financial projections.<br><br>
-                                📅 <strong>Date:</strong> 10th March, 2027<br>
-                                🕒 <strong>Time:</strong> 6:30 PM - 8:00 PM<br>
-                                📍 <strong>Platform:</strong> Online (MS Teams)<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=Securing%20Grants%20%26%20Funding%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 9 -->
+        <div class="modal fade" id="eventModal9" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel9"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel9">Securing Grants & Funding</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/s3.jpeg"
+                                    alt="Securing Grants & Funding">
+                            </div>
+                            <div class="col-md-6">
+                                <p>🌐 Securing Grants & Startup Funding: A Step-by-Step Guide 🌐<br><br>
+                                    Funding is one of the biggest challenges for early-stage startups. Fortunately,
+                                    there
+                                    are multiple grants and support systems specifically designed for student founders
+                                    in
+                                    Kerala.<br><br>
+                                    💡 <strong>What will be covered:</strong><br>
+                                    - Applying for the KSUM Student Idea Grant (up to ₹2 Lakhs).<br>
+                                    - Understanding NIDHI-PRAYAS and central government schemes.<br>
+                                    - Writing a winning grant proposal.<br>
+                                    - Preparing financial projections.<br><br>
+                                    📅 <strong>Date:</strong> 10th March, 2027<br>
+                                    🕒 <strong>Time:</strong> 6:30 PM - 8:00 PM<br>
+                                    📍 <strong>Platform:</strong> Online (MS Teams)<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=Securing%20Grants%20%26%20Funding%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal 10 -->
-    <div class="modal fade" id="eventModal10" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel10"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="eventModalLabel10">Pre-Incubation Launch</h3>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="img/s4.jpg" alt="Pre-Incubation Launch">
-                        </div>
-                        <div class="col-md-6">
-                            <p>🚀 Accelerate your growth! Pre-Incubation Program Cohort Launch 🚀<br><br>
-                                RSET IEDC is excited to announce applications for our intensive 3-month Pre-Incubation
-                                Cohort program. This program is designed to take your prototype and turn it into a
-                                market-ready product.<br><br>
-                                🏢 <strong>Cohort Benefits:</strong><br>
-                                - Dedicated co-working spaces at RSET Technology Business Incubator (TBI).<br>
-                                - Weekly 1-on-1 mentorship with industry experts.<br>
-                                - Up to $10,000 in cloud credits (AWS, Google Cloud, Azure).<br>
-                                - Company registration, legal compliance, and accounting assistance.<br><br>
-                                📅 <strong>Date:</strong> Cohort starts April 2nd, 2027<br>
-                                📍 <strong>Location:</strong> RSET TBI<br></p>
-                            <a href="mailto:iedc@rajagiritech.edu.in?subject=Pre-Incubation%20Cohort%20Registration" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+        <!-- Modal 10 -->
+        <div class="modal fade" id="eventModal10" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel10"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="eventModalLabel10">Pre-Incubation Launch</h3>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="img/s4.jpg"
+                                    alt="Pre-Incubation Launch">
+                            </div>
+                            <div class="col-md-6">
+                                <p>🚀 Accelerate your growth! Pre-Incubation Program Cohort Launch 🚀<br><br>
+                                    RSET IEDC is excited to announce applications for our intensive 3-month
+                                    Pre-Incubation
+                                    Cohort program. This program is designed to take your prototype and turn it into a
+                                    market-ready product.<br><br>
+                                    🏢 <strong>Cohort Benefits:</strong><br>
+                                    - Dedicated co-working spaces at RSET Technology Business Incubator (TBI).<br>
+                                    - Weekly 1-on-1 mentorship with industry experts.<br>
+                                    - Up to $10,000 in cloud credits (AWS, Google Cloud, Azure).<br>
+                                    - Company registration, legal compliance, and accounting assistance.<br><br>
+                                    📅 <strong>Date:</strong> Cohort starts April 2nd, 2027<br>
+                                    📍 <strong>Location:</strong> RSET TBI<br></p>
+                                <a href="mailto:iedc@rajagiritech.edu.in?subject=Pre-Incubation%20Cohort%20Registration"
+                                    class="btn btn-primary"><i class="fa fa-edit me-2"></i>Register Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!---Upcoming Events End-->
@@ -1193,7 +1221,7 @@
                     <p><i class="fa fa-envelope me-3"></i>nitheeshk@rajagiritech.edu.in</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <img src="img/footer.png" height="300px" width="375px" alt="iedc logo">
+                    <img src="img/rset_jubilee.jpeg" height="300px" width="375px" alt="RSET Jubilee Logo">
                 </div>
             </div>
         </div>
