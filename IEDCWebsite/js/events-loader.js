@@ -301,7 +301,7 @@
                 Event_ID: cell(row, 'Event_ID') || ('SHEET_' + idx),
                 Event_Title: title,
                 Event_Type: cell(row, 'Event_Type') || 'Event',
-                Category: cell(row, 'Category') || 'IEDC',
+                Category: cell(row, 'Category'),
                 Short_Description: cell(row, 'Short_Description'),
                 Detailed_Description: cell(row, 'Detailed_Description'),
                 Start_Date: cell(row, 'Start_Date'),
