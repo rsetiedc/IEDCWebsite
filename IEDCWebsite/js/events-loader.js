@@ -9,9 +9,9 @@
     "use strict";
 
     var SHEET_ID = '1rZUeS3HQUzrKHRNR1nplt5cdkHWK0h-wDOsjmGSSHp4';
-    var GID      = '311663456';
+    var GID = '311663456';
     var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
-                    '/gviz/tq?tqx=out:json&gid=' + GID;
+        '/gviz/tq?tqx=out:json&gid=' + GID;
 
     // ── Date helpers ────────────────────────────────────────────────────
 
@@ -54,7 +54,7 @@
         }
 
         var sMonth = start.toLocaleDateString('en-US', { month: 'short' });
-        var eMonth = end.toLocaleDateString('en-US',   { month: 'short' });
+        var eMonth = end.toLocaleDateString('en-US', { month: 'short' });
 
         if (start.getFullYear() === end.getFullYear()) {
             if (sMonth === eMonth) {
@@ -81,12 +81,12 @@
         }
         if (!str) return 'img/upcoming1.jpeg';
 
-        
+
         // Handle web URLs and Google Drive links robustly
-        var isUrl = /^(https?:\/\/|www\.)/i.test(str) || 
-                    /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\//.test(str) || 
-                    str.indexOf('drive.google.com') !== -1 || 
-                    str.indexOf('docs.google.com') !== -1;
+        var isUrl = /^(https?:\/\/|www\.)/i.test(str) ||
+            /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\//.test(str) ||
+            str.indexOf('drive.google.com') !== -1 ||
+            str.indexOf('docs.google.com') !== -1;
 
         if (isUrl) {
             var urlStr = str;
@@ -128,14 +128,14 @@
 
         var lower = str.toLowerCase();
         var map = [
-            [['bootcamp', 'weekend'],                       'img/gallery1.jpg'],
-            [['hackathon', 'idea'],                         'img/upcoming1.jpeg'],
-            [['prototype', 'design'],                       'img/gallery5.jpg'],
-            [['investor', 'grant', 'funding'],              'img/s2.jpeg'],
-            [['pitch'],                                     'img/s5.jpeg'],
-            [['ai', 'tech', 'emerging'],                    'img/s1.png'],
-            [['validation'],                                'img/s6.PNG'],
-            [['fireside', 'founder', 'entrepreneur'],       'img/gallery4.jpg']
+            [['bootcamp', 'weekend'], 'img/gallery1.jpg'],
+            [['hackathon', 'idea'], 'img/upcoming1.jpeg'],
+            [['prototype', 'design'], 'img/gallery5.jpg'],
+            [['investor', 'grant', 'funding'], 'img/s2.jpeg'],
+            [['pitch'], 'img/s5.jpeg'],
+            [['ai', 'tech', 'emerging'], 'img/s1.png'],
+            [['validation'], 'img/s6.PNG'],
+            [['fireside', 'founder', 'entrepreneur'], 'img/gallery4.jpg']
         ];
 
         for (var i = 0; i < map.length; i++) {
@@ -180,7 +180,7 @@
     function processSheetResponse(text) {
         // The response looks like:  /*O_o*/\ngoogle.visualization.Query.setResponse({...});
         var first = text.indexOf('{');
-        var last  = text.lastIndexOf('}');
+        var last = text.lastIndexOf('}');
         if (first === -1 || last === -1) throw new Error('No JSON object found in response');
 
         var data = JSON.parse(text.substring(first, last + 1));
@@ -218,33 +218,33 @@
             if (status.toLowerCase() === 'draft') return;  // skip drafts
 
             events.push({
-                Event_ID:              cell(row, 'Event_ID') || ('SHEET_' + idx),
-                Event_Title:           title,
-                Event_Type:            cell(row, 'Event_Type') || 'Event',
-                Category:              cell(row, 'Category')  || 'IEDC',
-                Short_Description:     cell(row, 'Short_Description'),
-                Detailed_Description:  cell(row, 'Detailed_Description'),
-                Start_Date:            cell(row, 'Start_Date'),
-                End_Date:              cell(row, 'End_Date'),
-                Event_Duration:        cell(row, 'Event_Duration'),
-                Start_Time:            cell(row, 'Start_Time'),
-                End_Time:              cell(row, 'End_Time'),
-                Venue:                 cell(row, 'Venue') || 'TBD',
-                Organizer:             cell(row, 'Organizer'),
-                Target_Audience:       cell(row, 'Target_Audience'),
+                Event_ID: cell(row, 'Event_ID') || ('SHEET_' + idx),
+                Event_Title: title,
+                Event_Type: cell(row, 'Event_Type') || 'Event',
+                Category: cell(row, 'Category') || 'IEDC',
+                Short_Description: cell(row, 'Short_Description'),
+                Detailed_Description: cell(row, 'Detailed_Description'),
+                Start_Date: cell(row, 'Start_Date'),
+                End_Date: cell(row, 'End_Date'),
+                Event_Duration: cell(row, 'Event_Duration'),
+                Start_Time: cell(row, 'Start_Time'),
+                End_Time: cell(row, 'End_Time'),
+                Venue: cell(row, 'Venue') || 'TBD',
+                Organizer: cell(row, 'Organizer'),
+                Target_Audience: cell(row, 'Target_Audience'),
                 Registration_Deadline: cell(row, 'Registration_Deadline'),
-                Capacity:              cell(row, 'Capacity'),
-                Status:                status,
-                Cover_Image:           cell(row, 'Cover_Image'),
-                Learning_Outcomes:     cell(row, 'Learning_Outcomes'),
-                Mentor_Details:        cell(row, 'Mentor_Details'),
-                Key_Topics:            cell(row, 'Key_Topics'),
-                Contact_Name:          cell(row, 'Contact_Name') || cell(row, 'Contact_Person'),
-                Contact_Email:         cell(row, 'Contact_Email'),
-                Contact_Phone:         cell(row, 'Contact_Phone'),
-                Tags:                  cell(row, 'Tags'),
-                Reg_Form:              cell(row, 'Reg_Form'),
-                Created_At:            cell(row, 'Created_At') || cell(row, 'Created_Date')
+                Capacity: cell(row, 'Capacity'),
+                Status: status,
+                Cover_Image: cell(row, 'Cover_Image'),
+                Learning_Outcomes: cell(row, 'Learning_Outcomes'),
+                Mentor_Details: cell(row, 'Mentor_Details'),
+                Key_Topics: cell(row, 'Key_Topics'),
+                Contact_Name: cell(row, 'Contact_Name') || cell(row, 'Contact_Person'),
+                Contact_Email: cell(row, 'Contact_Email'),
+                Contact_Phone: cell(row, 'Contact_Phone'),
+                Tags: cell(row, 'Tags'),
+                Reg_Form: cell(row, 'Reg_Form'),
+                Created_At: cell(row, 'Created_At') || cell(row, 'Created_Date')
             });
         });
 
@@ -266,7 +266,7 @@
         var $modals = $('#modals-container');
         if (!$openContainer.length || !$closedContainer.length || !$modals.length) return;
 
-        var openCardsHtml  = '';
+        var openCardsHtml = '';
         var closedCardsHtml = '';
         var modalsHtml = '';
 
@@ -274,15 +274,15 @@
         var closedCount = 0;
 
         $.each(events, function (index, ev) {
-            var dateStr   = formatEventDate(ev.Start_Date, ev.End_Date);
-            var imgPath   = getEventImage(ev.Cover_Image, ev.Event_Title, ev.Created_At);
+            var dateStr = formatEventDate(ev.Start_Date, ev.End_Date);
+            var imgPath = getEventImage(ev.Cover_Image, ev.Event_Title, ev.Created_At);
             var statusLower = ev.Status.toLowerCase();
-            var isOpen    = (statusLower === 'upcoming' || statusLower === 'active');
-            
+            var isOpen = (statusLower === 'upcoming' || statusLower === 'active');
+
             var cardIndex = isOpen ? openCount : closedCount;
-            var delay     = ((cardIndex % 3) * 0.2 + 0.1).toFixed(1) + 's';
-            var modalId   = 'sheetModal_' + esc(ev.Event_ID);
-            var btnLabel  = isOpen ? 'Register Now' : 'Read More';
+            var delay = ((cardIndex % 3) * 0.2 + 0.1).toFixed(1) + 's';
+            var modalId = 'sheetModal_' + esc(ev.Event_ID);
+            var btnLabel = isOpen ? 'Register Now' : 'Read More';
 
             if (isOpen) {
                 openCount++;
@@ -293,34 +293,34 @@
             // ──── Card ────
             var cardHtml =
                 '<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="' + delay + '">' +
-                  '<div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100 shadow-sm">' +
-                    '<div class="p-4 pt-3 flex-grow-1">' +
-                      '<div class="d-inline-block bg-secondary text-primary rounded-pill px-3 py-1 mb-3 small fw-bold">' +
-                        esc(ev.Event_Type) +
-                      '</div>' +
-                      '<h5 class="mb-3">' + esc(ev.Event_Title) + '</h5>' +
-                      '<p class="text-muted mb-3">' + esc(ev.Short_Description) + '</p>' +
-                      '<div class="border-top pt-2 mt-auto">' +
-                        '<small class="text-body d-block mb-1">' +
-                          '<i class="fa fa-calendar-alt text-primary me-2"></i>' + esc(dateStr) +
-                        '</small>' +
-                        '<small class="text-body d-block">' +
-                          '<i class="fa fa-map-marker-alt text-primary me-2"></i>' + esc(ev.Venue) +
-                        '</small>' +
-                      '</div>' +
-                    '</div>' +
-                    '<div class="position-relative mt-auto">' +
-                      '<img class="img-fluid w-100" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '" style="height:220px;object-fit:cover;">' +
-                      '<div class="causes-overlay">' +
-                        '<a class="btn btn-outline-primary" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#' + modalId + '">' +
-                          btnLabel +
-                          '<div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">' +
-                            '<i class="fa fa-arrow-right"></i>' +
-                          '</div>' +
-                        '</a>' +
-                      '</div>' +
-                    '</div>' +
-                  '</div>' +
+                '<div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100 shadow-sm">' +
+                '<div class="p-4 pt-3 flex-grow-1">' +
+                '<div class="d-inline-block bg-secondary text-primary rounded-pill px-3 py-1 mb-3 small fw-bold">' +
+                esc(ev.Event_Type) +
+                '</div>' +
+                '<h5 class="mb-3">' + esc(ev.Event_Title) + '</h5>' +
+                '<p class="text-muted mb-3">' + esc(ev.Short_Description) + '</p>' +
+                '<div class="border-top pt-2 mt-auto">' +
+                '<small class="text-body d-block mb-1">' +
+                '<i class="fa fa-calendar-alt text-primary me-2"></i>' + esc(dateStr) +
+                '</small>' +
+                '<small class="text-body d-block">' +
+                '<i class="fa fa-map-marker-alt text-primary me-2"></i>' + esc(ev.Venue) +
+                '</small>' +
+                '</div>' +
+                '</div>' +
+                '<div class="position-relative mt-auto">' +
+                '<img class="img-fluid w-100" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '" style="height:220px;object-fit:cover;">' +
+                '<div class="causes-overlay">' +
+                '<a class="btn btn-outline-primary" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#' + modalId + '">' +
+                btnLabel +
+                '<div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">' +
+                '<i class="fa fa-arrow-right"></i>' +
+                '</div>' +
+                '</a>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
                 '</div>';
 
             if (isOpen) {
@@ -332,39 +332,39 @@
             // ──── Modal ────
             var modalBody =
                 '<div class="row">' +
-                  '<div class="col-md-6">' +
-                    '<img class="img-fluid rounded mb-3 mb-md-0" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '">' +
-                  '</div>' +
-                  '<div class="col-md-6">' +
- 
-                    // Badges
-                    '<div class="mb-3">' +
-                      '<span class="badge bg-secondary text-primary rounded-pill px-3 py-1 fw-bold">' + esc(ev.Event_Type) + '</span>' +
-                      (ev.Category ? ' <span class="badge bg-primary text-white rounded-pill px-3 py-1 fw-bold ms-1">' + esc(ev.Category) + '</span>' : '') +
-                    '</div>' +
- 
-                    // Description
-                    '<p class="mb-4">' + esc(ev.Detailed_Description || ev.Short_Description) + '</p>' +
- 
-                    // Event Details box
-                    '<div class="bg-light p-3 rounded mb-3">' +
-                      '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-info-circle text-primary me-2"></i>Event Details</h6>' +
-                      '<small class="d-block mb-1"><strong>📅 Date:</strong> ' + esc(dateStr) + '</small>' +
-                      (ev.Start_Time ? '<small class="d-block mb-1"><strong>🕒 Time:</strong> ' + esc(ev.Start_Time) + (ev.End_Time ? ' – ' + esc(ev.End_Time) : '') + '</small>' : '') +
-                      '<small class="d-block mb-1"><strong>📍 Venue:</strong> ' + esc(ev.Venue) + '</small>' +
-                      (ev.Organizer       ? '<small class="d-block mb-1"><strong>🏢 Organizer:</strong> '       + esc(ev.Organizer) + '</small>'       : '') +
-                      (ev.Target_Audience  ? '<small class="d-block mb-1"><strong>👥 Audience:</strong> '        + esc(ev.Target_Audience) + '</small>'  : '') +
-                      (ev.Capacity         ? '<small class="d-block mb-1"><strong>💺 Capacity:</strong> '        + esc(String(ev.Capacity)) + ' seats</small>' : '') +
-                    '</div>';
+                '<div class="col-md-6">' +
+                '<img class="img-fluid rounded mb-3 mb-md-0" src="' + imgPath + '" alt="' + esc(ev.Event_Title) + '">' +
+                '</div>' +
+                '<div class="col-md-6">' +
+
+                // Badges
+                '<div class="mb-3">' +
+                '<span class="badge bg-secondary text-primary rounded-pill px-3 py-1 fw-bold">' + esc(ev.Event_Type) + '</span>' +
+                (ev.Category ? ' <span class="badge bg-primary text-white rounded-pill px-3 py-1 fw-bold ms-1">' + esc(ev.Category) + '</span>' : '') +
+                '</div>' +
+
+                // Description
+                '<p class="mb-4">' + esc(ev.Detailed_Description || ev.Short_Description) + '</p>' +
+
+                // Event Details box
+                '<div class="bg-light p-3 rounded mb-3">' +
+                '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-info-circle text-primary me-2"></i>Event Details</h6>' +
+                '<small class="d-block mb-1"><strong>📅 Date:</strong> ' + esc(dateStr) + '</small>' +
+                (ev.Start_Time ? '<small class="d-block mb-1"><strong>🕒 Time:</strong> ' + esc(ev.Start_Time) + (ev.End_Time ? ' – ' + esc(ev.End_Time) : '') + '</small>' : '') +
+                '<small class="d-block mb-1"><strong>📍 Venue:</strong> ' + esc(ev.Venue) + '</small>' +
+                (ev.Organizer ? '<small class="d-block mb-1"><strong>🏢 Organizer:</strong> ' + esc(ev.Organizer) + '</small>' : '') +
+                (ev.Target_Audience ? '<small class="d-block mb-1"><strong>👥 Audience:</strong> ' + esc(ev.Target_Audience) + '</small>' : '') +
+                (ev.Capacity ? '<small class="d-block mb-1"><strong>💺 Capacity:</strong> ' + esc(String(ev.Capacity)) + ' seats</small>' : '') +
+                '</div>';
 
             // Content & Mentors (only if data exists)
             if (ev.Mentor_Details || ev.Key_Topics || ev.Learning_Outcomes) {
                 modalBody +=
                     '<div class="bg-light p-3 rounded mb-3">' +
-                      '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-chalkboard-teacher text-primary me-2"></i>Content &amp; Mentors</h6>' +
-                      (ev.Mentor_Details    ? '<small class="d-block mb-1"><strong>Mentor(s):</strong> '          + esc(ev.Mentor_Details) + '</small>'    : '') +
-                      (ev.Key_Topics        ? '<small class="d-block mb-1"><strong>Key Topics:</strong> '         + esc(ev.Key_Topics) + '</small>'        : '') +
-                      (ev.Learning_Outcomes ? '<small class="d-block mb-1"><strong>Learning Outcomes:</strong> '  + esc(ev.Learning_Outcomes) + '</small>' : '') +
+                    '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-chalkboard-teacher text-primary me-2"></i>Content &amp; Mentors</h6>' +
+                    (ev.Mentor_Details ? '<small class="d-block mb-1"><strong>Mentor(s):</strong> ' + esc(ev.Mentor_Details) + '</small>' : '') +
+                    (ev.Key_Topics ? '<small class="d-block mb-1"><strong>Key Topics:</strong> ' + esc(ev.Key_Topics) + '</small>' : '') +
+                    (ev.Learning_Outcomes ? '<small class="d-block mb-1"><strong>Learning Outcomes:</strong> ' + esc(ev.Learning_Outcomes) + '</small>' : '') +
                     '</div>';
             }
 
@@ -372,18 +372,18 @@
             if (ev.Registration_Deadline || ev.Contact_Name || ev.Contact_Email || ev.Contact_Phone) {
                 modalBody +=
                     '<div class="bg-light p-3 rounded mb-3">' +
-                      '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-address-book text-primary me-2"></i>Registration &amp; Contact</h6>' +
-                      (ev.Registration_Deadline ? '<small class="d-block mb-1 text-danger"><strong>⏰ Deadline:</strong> ' + esc(formatEventDate(ev.Registration_Deadline)) + '</small>' : '') +
-                      (ev.Contact_Name  ? '<small class="d-block mb-1"><strong>👤 Contact:</strong> '  + esc(ev.Contact_Name) + '</small>'   : '') +
-                      (ev.Contact_Phone ? '<small class="d-block mb-1"><strong>📞 Phone:</strong> <a href="tel:' + esc(ev.Contact_Phone) + '">'  + esc(ev.Contact_Phone) + '</a></small>' : '') +
-                      (ev.Contact_Email ? '<small class="d-block mb-1"><strong>✉️ Email:</strong> <a href="mailto:' + esc(ev.Contact_Email) + '">' + esc(ev.Contact_Email) + '</a></small>' : '') +
+                    '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-address-book text-primary me-2"></i>Registration &amp; Contact</h6>' +
+                    (ev.Registration_Deadline ? '<small class="d-block mb-1 text-danger"><strong>⏰ Deadline:</strong> ' + esc(formatEventDate(ev.Registration_Deadline)) + '</small>' : '') +
+                    (ev.Contact_Name ? '<small class="d-block mb-1"><strong>👤 Contact:</strong> ' + esc(ev.Contact_Name) + '</small>' : '') +
+                    (ev.Contact_Phone ? '<small class="d-block mb-1"><strong>📞 Phone:</strong> <a href="tel:' + esc(ev.Contact_Phone) + '">' + esc(ev.Contact_Phone) + '</a></small>' : '') +
+                    (ev.Contact_Email ? '<small class="d-block mb-1"><strong>✉️ Email:</strong> <a href="mailto:' + esc(ev.Contact_Email) + '">' + esc(ev.Contact_Email) + '</a></small>' : '') +
                     '</div>';
             }
 
             // CTA button — link directly to Google Form URL
             if (isOpen && ev.Reg_Form) {
                 modalBody += '<a href="' + esc(ev.Reg_Form) + '" target="_blank" class="btn btn-primary w-100 mt-2 reg-now-btn">' +
-                             '<i class="fa fa-edit me-2"></i>Register Now</a>';
+                    '<i class="fa fa-edit me-2"></i>Register Now</a>';
             } else if (isOpen) {
                 modalBody += '<button class="btn btn-secondary w-100 mt-2" disabled>Registration Link Unavailable</button>';
             } else {
@@ -391,20 +391,20 @@
             }
 
             modalBody +=
-                  '</div>' +   // close col-md-6
+                '</div>' +   // close col-md-6
                 '</div>';      // close row
 
             modalsHtml +=
                 '<div class="modal fade" id="' + modalId + '" tabindex="-1" aria-labelledby="' + modalId + 'Label" aria-hidden="true">' +
-                  '<div class="modal-dialog modal-lg">' +
-                    '<div class="modal-content">' +
-                      '<div class="modal-header">' +
-                        '<h3 class="modal-title" id="' + modalId + 'Label">' + esc(ev.Event_Title) + '</h3>' +
-                        '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                      '</div>' +
-                      '<div class="modal-body">' + modalBody + '</div>' +
-                    '</div>' +
-                  '</div>' +
+                '<div class="modal-dialog modal-lg">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                '<h3 class="modal-title" id="' + modalId + 'Label">' + esc(ev.Event_Title) + '</h3>' +
+                '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+                '</div>' +
+                '<div class="modal-body">' + modalBody + '</div>' +
+                '</div>' +
+                '</div>' +
                 '</div>';
         });
 

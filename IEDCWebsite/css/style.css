@@ -78,6 +78,13 @@
     transition: .5s;
 }
 
+.header-iic-logo {
+    max-height: 95px !important;
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: screen;
+}
+
 .top-bar {
     height: 45px;
     border-bottom: 1px solid rgba(255, 255, 255, .07);
@@ -170,7 +177,7 @@
         position: relative;
         min-height: 450px;
     }
-    
+
     #header-carousel .carousel-item img {
         position: absolute;
         width: 100%;
@@ -237,6 +244,28 @@
 
 .causes-item:hover .causes-overlay {
     background: rgba(0, 0, 0, .6);
+}
+
+.causes-item .causes-overlay .btn-outline-primary {
+    background-color: var(--primary) !important;
+    color: #FFFFFF !important;
+    border-color: var(--primary) !important;
+}
+
+.causes-item .causes-overlay .btn-outline-primary:hover {
+    background-color: transparent !important;
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.causes-item .causes-overlay .btn-outline-primary .btn-sm-square {
+    background-color: #FFFFFF !important;
+    color: var(--primary) !important;
+}
+
+.causes-item .causes-overlay .btn-outline-primary:hover .btn-sm-square {
+    background-color: var(--primary) !important;
+    color: #FFFFFF !important;
 }
 
 
@@ -336,6 +365,7 @@
 }
 
 @media (min-width: 768px) {
+
     .testimonial-carousel::before,
     .testimonial-carousel::after {
         width: 200px;
@@ -343,6 +373,7 @@
 }
 
 @media (min-width: 992px) {
+
     .testimonial-carousel::before,
     .testimonial-carousel::after {
         width: 300px;
@@ -371,7 +402,7 @@
 
 .testimonial-carousel .owl-item.center .testimonial-item img {
     background: var(--primary) !important;
-} 
+}
 
 .testimonial-carousel .owl-nav {
     position: absolute;
@@ -415,7 +446,7 @@
     margin-bottom: 5px;
     padding: 0;
     text-align: left;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     font-weight: normal;
     text-transform: capitalize;
     transition: .3s;
@@ -426,7 +457,7 @@
     content: "\f105";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     margin-right: 10px;
 }
 
@@ -437,8 +468,8 @@
 }
 
 .footer .btn.btn-square {
-    color: rgba(255,255,255,0.5);
-    border: 1px solid rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .footer .btn.btn-square:hover {
@@ -460,14 +491,14 @@
     color: var(--primary);
 }
 
-.gradient{
+.gradient {
     /*font-size: 45px;*/
     background: linear-gradient(to right, #ff6b08, #eedd44);
--webkit-text-fill-color: transparent;
--webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
-.accordion{
+.accordion {
     margin-left: 5%;
     width: 90%;
 }
@@ -486,7 +517,8 @@
 /* Styling for the image margin on phone (smaller screens) */
 @media (max-width: 767px) {
     .modal-body img {
-        margin-top: 0; /* Remove the top margin for phone */
+        margin-top: 0;
+        /* Remove the top margin for phone */
         margin-bottom: 10%;
     }
 }
@@ -505,23 +537,25 @@
 .modal-body .btn-primary {
     margin-top: 10px;
 }
-  /* The Close Button */
-  .close {
+
+/* The Close Button */
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
     border: none;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 
-  }
-  .team-item .overflow-hidden {
+}
+
+.team-item .overflow-hidden {
     position: relative;
     width: 100%;
     padding-top: 100%;
@@ -675,9 +709,9 @@
     font-weight: 500;
 }
 
-.reg-form-group input.is-invalid ~ .invalid-feedback,
-.reg-form-group select.is-invalid ~ .invalid-feedback,
-.reg-form-group .is-invalid ~ .invalid-feedback {
+.reg-form-group input.is-invalid~.invalid-feedback,
+.reg-form-group select.is-invalid~.invalid-feedback,
+.reg-form-group .is-invalid~.invalid-feedback {
     display: block;
 }
 
@@ -713,7 +747,7 @@
     margin-bottom: 0;
 }
 
-.reg-checkbox-item input[type="checkbox"]:checked + label {
+.reg-checkbox-item input[type="checkbox"]:checked+label {
     border-color: #FF6F0F;
     background: linear-gradient(135deg, #FFF0E6, #FFF5ED);
     color: #FF6F0F;
@@ -875,14 +909,29 @@
 
 /* Animations */
 @keyframes regFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes regBounceIn {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Responsive */
@@ -890,12 +939,15 @@
     #registrationFormModal .modal-body {
         padding: 20px 20px 28px;
     }
+
     #registrationFormModal .modal-header {
         padding: 20px 20px 18px;
     }
+
     .reg-checkbox-group {
         gap: 8px;
     }
+
     .reg-checkbox-item label {
         padding: 6px 14px;
         font-size: 0.8rem;
@@ -906,6 +958,7 @@
 #eventsTab {
     border: none;
 }
+
 #eventsTab .nav-link {
     color: #1a1a2e;
     font-weight: 600;
@@ -916,12 +969,14 @@
     margin: 0 5px;
     transition: all 0.3s ease;
 }
+
 #eventsTab .nav-link.active {
     background-color: var(--primary);
     border-color: var(--primary);
     color: #fff;
     box-shadow: 0 4px 15px rgba(255, 111, 15, 0.2);
 }
+
 #eventsTab .nav-link:hover:not(.active) {
     border-color: var(--primary);
     color: var(--primary);
