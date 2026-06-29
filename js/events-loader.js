@@ -387,6 +387,9 @@
                 '<small class="text-body d-block mb-1">' +
                 '<i class="fa fa-calendar-alt text-primary me-2"></i>' + esc(dateStr) +
                 '</small>' +
+                (ev.Start_Time ? '<small class="text-body d-block mb-1">' +
+                '<i class="fa fa-clock text-primary me-2"></i>' + esc(ev.Start_Time) + (ev.End_Time ? ' - ' + esc(ev.End_Time) : '') +
+                '</small>' : '') +
                 '<small class="text-body d-block">' +
                 '<i class="fa fa-map-marker-alt text-primary me-2"></i>' + esc(ev.Venue) +
                 '</small>' +
