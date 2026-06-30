@@ -11,30 +11,67 @@
     var SHEET_ID = '1rZUeS3HQUzrKHRNR1nplt5cdkHWK0h-wDOsjmGSSHp4';
     var GID = '311663456';
     var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
-        '/gviz/tq?tqx=out:json&gid=' + GID;
+        '/export?format=csv&gid=' + GID;
 
     // ── Date helpers ────────────────────────────────────────────────────
 
     /**
-     * The Google Visualization API can return dates in two formats:
-     *   1. A plain string like "2026-10-12"
-     *   2. A JS constructor string "Date(2026,9,12)" (months 0-indexed)
-     * This helper normalises both into a real Date object.
+     * Parse date from Google Sheets CSV/GViz format.
      */
     function parseGVizDate(val) {
         if (!val && val !== 0) return null;
+        val = String(val).trim();
 
         // Handle Google Viz "Date(year, month, day)" notation
-        if (typeof val === 'string') {
-            var m = val.match(/^Date\((\d+),\s*(\d+),\s*(\d+)\)$/);
-            if (m) {
-                return new Date(parseInt(m[1], 10), parseInt(m[2], 10), parseInt(m[3], 10));
-            }
+        var m = val.match(/^Date\((\d+),\s*(\d+),\s*(\d+)\)$/);
+        if (m) {
+            return new Date(parseInt(m[1], 10), parseInt(m[2], 10), parseInt(m[3], 10));
+        }
+
+        // Handle DD-MM-YYYY format
+        var dmy = val.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+        if (dmy) {
+            return new Date(parseInt(dmy[3], 10), parseInt(dmy[2], 10) - 1, parseInt(dmy[1], 10));
         }
 
         // Otherwise try native parsing
         var d = new Date(val);
         return isNaN(d.getTime()) ? null : d;
+    }
+
+    /**
+     * RFC 4180 compliant CSV parser.
+     */
+    function parseCSV(text) {
+        var lines = [];
+        var row = [""];
+        var inQuotes = false;
+        for (var i = 0; i < text.length; i++) {
+            var c = text[i];
+            var next = text[i + 1];
+            if (c === '"') {
+                if (inQuotes && next === '"') {
+                    row[row.length - 1] += '"';
+                    i++;
+                } else {
+                    inQuotes = !inQuotes;
+                }
+            } else if (c === ',' && !inQuotes) {
+                row.push("");
+            } else if ((c === '\r' || c === '\n') && !inQuotes) {
+                if (c === '\r' && next === '\n') {
+                    i++;
+                }
+                lines.push(row);
+                row = [""];
+            } else {
+                row[row.length - 1] += c;
+            }
+        }
+        if (row.length > 1 || row[0] !== "") {
+            lines.push(row);
+        }
+        return lines;
     }
 
     /**
@@ -258,44 +295,35 @@
     }
 
     function processSheetResponse(text) {
-        // The response looks like:  /*O_o*/\ngoogle.visualization.Query.setResponse({...});
-        var first = text.indexOf('{');
-        var last = text.lastIndexOf('}');
-        if (first === -1 || last === -1) throw new Error('No JSON object found in response');
-
-        var data = JSON.parse(text.substring(first, last + 1));
-        if (!data.table || !data.table.cols || !data.table.rows) {
-            throw new Error('Unexpected table structure');
+        var rows = parseCSV(text);
+        if (rows.length < 2) {
+            throw new Error('Empty sheet data or header missing');
         }
 
-        var cols = data.table.cols;
-        var rows = data.table.rows;
-
+        var headers = rows[0];
         // Build a map  label → column index
         var hdr = {};
-        $.each(cols, function (idx, col) {
-            if (col && col.label) hdr[col.label.trim()] = idx;
+        $.each(headers, function (idx, col) {
+            if (col) hdr[col.trim()] = idx;
         });
 
-        // Extract a cell value, handling the GViz {v:…, f:…} structure
+        // Extract a cell value
         function cell(row, label) {
             var i = hdr[label];
             if (i === undefined) return '';
-            var c = row.c[i];
-            if (!c) return '';
-            // For dates the Viz API puts a "Date(…)" string in .v
-            // and a human-readable version in .f — prefer .v for parsing.
-            return (c.v !== null && c.v !== undefined) ? c.v : '';
+            var val = row[i];
+            return (val !== null && val !== undefined) ? String(val) : '';
         }
 
         var events = [];
-        $.each(rows, function (idx, row) {
-            if (!row || !row.c) return;   // skip totally empty rows
+        for (var idx = 1; idx < rows.length; idx++) {
+            var row = rows[idx];
+            if (!row || row.length === 0) continue;
             var title = cell(row, 'Event_Title');
-            if (!title) return;           // skip rows without a title
+            if (!title) continue;           // skip rows without a title
 
             var status = String(cell(row, 'Status') || 'Upcoming');
-            if (status.toLowerCase() === 'draft') return;  // skip drafts
+            if (status.toLowerCase() === 'draft') continue;  // skip drafts
 
             events.push({
                 Event_ID: cell(row, 'Event_ID') || ('SHEET_' + idx),
@@ -326,7 +354,7 @@
                 Reg_Form: cell(row, 'Reg_Form'),
                 Created_At: cell(row, 'Created_At') || cell(row, 'Created_Date')
             });
-        });
+        }
 
         if (events.length === 0) {
             console.warn('[events-loader] No displayable events in sheet. Keeping static HTML.');
@@ -459,11 +487,32 @@
                 modalBody +=
                     '<div class="bg-light p-3 rounded mb-3">' +
                     '<h6 class="border-bottom pb-2 mb-2"><i class="fa fa-address-book text-primary me-2"></i>Registration &amp; Contact</h6>' +
-                    (ev.Registration_Deadline ? '<small class="d-block mb-1 text-danger"><strong>⏰ Deadline:</strong> ' + esc(formatEventDate(ev.Registration_Deadline)) + '</small>' : '') +
-                    (ev.Contact_Name ? '<small class="d-block mb-1"><strong>👤 Contact:</strong> ' + esc(ev.Contact_Name) + '</small>' : '') +
-                    (ev.Contact_Phone ? '<small class="d-block mb-1"><strong>📞 Phone:</strong> <a href="tel:' + esc(ev.Contact_Phone) + '">' + esc(ev.Contact_Phone) + '</a></small>' : '') +
-                    (ev.Contact_Email ? '<small class="d-block mb-1"><strong>✉️ Email:</strong> <a href="mailto:' + esc(ev.Contact_Email) + '">' + esc(ev.Contact_Email) + '</a></small>' : '') +
-                    '</div>';
+                    (ev.Registration_Deadline ? '<small class="d-block mb-1 text-danger"><strong>⏰ Deadline:</strong> ' + esc(formatEventDate(ev.Registration_Deadline)) + '</small>' : '');
+
+                var contactNames = ev.Contact_Name ? ev.Contact_Name.split(/\r?\n/) : [];
+                var contactPhones = ev.Contact_Phone ? String(ev.Contact_Phone).split(/\r?\n/) : [];
+                var contactEmails = ev.Contact_Email ? ev.Contact_Email.split(/\r?\n/) : [];
+                var maxContacts = Math.max(contactNames.length, contactPhones.length, contactEmails.length);
+
+                for (var i = 0; i < maxContacts; i++) {
+                    var name = (contactNames[i] || '').trim();
+                    var phone = (contactPhones[i] || '').trim();
+                    var email = (contactEmails[i] || '').trim();
+                    var parts = [];
+                    if (name) {
+                        parts.push('<strong>👤 Contact:</strong> ' + esc(name));
+                    }
+                    if (phone) {
+                        parts.push('<strong>📞 Phone:</strong> <a href="tel:' + esc(phone) + '">' + esc(phone) + '</a>');
+                    }
+                    if (email) {
+                        parts.push('<strong>✉️ Email:</strong> <a href="mailto:' + esc(email) + '">' + esc(email) + '</a>');
+                    }
+                    if (parts.length > 0) {
+                        modalBody += '<small class="d-block mb-1">' + parts.join(' &nbsp;|&nbsp; ') + '</small>';
+                    }
+                }
+                modalBody += '</div>';
             }
 
             // CTA button — link directly to Google Form URL
