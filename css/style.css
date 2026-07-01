@@ -78,8 +78,14 @@
     transition: .5s;
 }
 
+.header-rset-logo {
+    max-height: 130px !important;
+    max-width: 380px !important;
+    object-fit: contain;
+}
+
 .header-iic-logo {
-    max-height: 95px !important;
+    max-height: 130px !important;
     width: auto;
     object-fit: contain;
     mix-blend-mode: screen;
