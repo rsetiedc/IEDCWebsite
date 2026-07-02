@@ -79,13 +79,13 @@
 }
 
 .header-rset-logo {
-    max-height: 130px !important;
-    max-width: 380px !important;
+    max-height: 200px !important;
+    max-width: 550px !important;
     object-fit: contain;
 }
 
 .header-iic-logo {
-    max-height: 130px !important;
+    max-height: 200px !important;
     width: auto;
     object-fit: contain;
     mix-blend-mode: screen;

@@ -285,11 +285,13 @@
                 } catch (err) {
                     console.error('[events-loader] Parse error:', err);
                     // Keep the static fallback HTML as-is
+                    $('#events-container').removeClass('d-none');
                 }
             },
             error: function (xhr, status, err) {
                 console.warn('[events-loader] Could not reach Google Sheet (' + status + '). Keeping static fallback.', err);
-                // Static HTML remains untouched — nothing to do
+                // Reveal the fallback container
+                $('#events-container').removeClass('d-none');
             }
         });
     }
@@ -360,6 +362,30 @@
             console.warn('[events-loader] No displayable events in sheet. Keeping static HTML.');
             return;
         }
+
+        // Sort events by Start_Date descending (latest first)
+        events.sort(function (a, b) {
+            var dateA = parseGVizDate(a.Start_Date);
+            var dateB = parseGVizDate(b.Start_Date);
+            
+            if (dateA && dateB) {
+                var diff = dateB.getTime() - dateA.getTime();
+                if (diff !== 0) return diff;
+            } else if (dateA) {
+                return -1;
+            } else if (dateB) {
+                return 1;
+            }
+            
+            // Fallback to Created_At if available
+            var createA = a.Created_At ? new Date(a.Created_At) : null;
+            var createB = b.Created_At ? new Date(b.Created_At) : null;
+            if (createA && !isNaN(createA.getTime()) && createB && !isNaN(createB.getTime())) {
+                var cDiff = createB.getTime() - createA.getTime();
+                if (cDiff !== 0) return cDiff;
+            }
+            return 0;
+        });
 
         renderEvents(events);
     }
@@ -563,6 +589,12 @@
         // Re-init WOW.js so the freshly injected cards still animate
         if (typeof WOW !== 'undefined') {
             new WOW({ live: false }).init();
+        }
+
+        // Ensure the Open Events tab is selected/active on load
+        var $openTab = $('#open-events-tab');
+        if ($openTab.length && typeof $.fn.tab === 'function') {
+            $openTab.tab('show');
         }
     }
 
