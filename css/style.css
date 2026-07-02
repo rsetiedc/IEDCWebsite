@@ -489,6 +489,32 @@
     border-top: 1px solid rgba(256, 256, 256, .1);
 }
 
+.footer-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+@media (min-width: 992px) {
+    .footer-logo-container {
+        align-items: flex-start;
+    }
+}
+
+.footer-rset-logo {
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: screen;
+}
+
+.footer-iedc-logo {
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+}
+
 .footer .copyright a {
     color: var(--secondary);
 }
